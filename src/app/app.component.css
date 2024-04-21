@@ -1,0 +1,19 @@
+/* Augmenter la taille de la police pour les liens du menu */
+.navbar-area .navbar-nav .nav-link {
+    font-size: 25px; /* Changez cette valeur selon votre besoin */
+}
+/* Augmenter la taille de la police pour les éléments du topbar */
+.topbar-area .topbar-list a,
+.topbar-area .topbar-others-options a {
+    font-size: 20px; /* Changez cette valeur selon votre besoin */
+}
+
+/* Couleur du texte blanc pour les éléments de la topbar */
+.topbar-area .topbar-list a,
+.topbar-area .topbar-others-options a {
+    color: #fff; /* Blanc */
+}
+/* Couleur du texte blanc pour les éléments de la navbar */
+.navbar-area .navbar-nav .nav-link {
+    color: #fff; /* Blanc */
+}

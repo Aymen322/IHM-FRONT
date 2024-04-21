@@ -1,0 +1,53 @@
+.side_canvas_wrapper {
+    padding: 20px;
+}
+
+.booking-form .form-group {
+    margin-bottom: 20px;
+}
+
+.booking-form label {
+    font-weight: bold;
+}
+
+.booking-form input[type="text"],
+.booking-form input[type="email"],
+.booking-form input[type="tel"],
+.booking-form input[type="date"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.btn-theme {
+    background-color: #8b3eea;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-theme:hover {
+    background-color: #6b2a96;
+}
+.stylish-heading {
+    background-color: #f8f9fa; /* Light gray background */
+    padding: 10px; /* Add padding */
+    border-radius: 5px; /* Add rounded corners */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Add shadow for depth */
+}
+
+.stylish-heading h4 {
+    color: #007bff; /* Blue color for stars */
+    font-weight: bold; /* Bold font for stars */
+    margin-bottom: 5px; /* Add space below stars */
+}
+
+.stylish-heading p {
+    color: #6c757d; /* Gray color for reviews */
+    margin: 0; /* Remove default margins */
+}

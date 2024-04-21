@@ -1,0 +1,92 @@
+<header>
+    <!-- Your header content -->
+  </header>
+  <!-- client.component.html -->
+  
+  <div class="container">
+     
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      
+        <ul class="sidebar-nav">
+          
+            <li class="sidebar-brand">
+              
+                <a href="#" style="color: blueviolet;">
+                  
+                    Admin Dashbord
+                </a>
+            </li>
+            
+            <li>
+              <a routerLink="/admin-clients">Clients</a>
+          </li>
+          <li>
+              <a routerLink="/admin-hotels">Hotels</a>
+          </li>
+            <li>
+              <a routerLink="/admin-regions">Regions</a>
+            </li>
+            <li>
+                <a href="#">Reservation</a>
+            </li>
+          
+        </ul>
+    </div>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div>
+        <app-create-region></app-create-region>
+    </div>
+    <table mat-table [dataSource]="regions" class="mat-elevation-z8" #mytable>
+        <tr mat-header-row *matHeaderRowDef="columns"></tr>
+        
+        <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+        <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef>Image</th>
+            <td mat-cell *matCellDef="let t">
+              <!-- Check if t.image exists before trying to display it -->
+              <img *ngIf="t.image" [src]="t.image" alt="Image" style="width: 100px; height: 100px ;">
+            </td>
+          </ng-container>
+
+
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>name</th>
+            <td mat-cell *matCellDef="let t">{{t.name}}</td>
+        </ng-container>
+     
+          
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let t">{{ t.description}}</td>
+        </ng-container>
+        
+        <ng-container matColumnDef="score">
+            <th mat-header-cell *matHeaderCellDef>Score</th>
+            <td mat-cell *matCellDef="let t">{{ t.score}}</td>
+        </ng-container>
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef mat-sort-header>Action</th>
+            <td mat-cell *matCellDef="let t">
+                <button class="blue-button">Edit</button>
+    <button class="red-button">Delete</button>
+            </td>
+        </ng-container>
+          
+    </table>
+
+
+</div>
+<br>
+<br>  
+<br>
+<br>  
+<br>
+<br>  
+<br>
+<br>  

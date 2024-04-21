@@ -1,0 +1,10 @@
+<div *ngIf="hotels">
+    <h1>Hotels</h1>
+    <div *ngFor="let hotel of hotels">
+      <h2>{{ hotel.name }}</h2>
+      <p>{{ hotel.description }}</p>
+      <p>Price: {{ hotel.price }}</p>
+      <!-- Add more properties as needed -->
+    </div>
+  </div>
+  

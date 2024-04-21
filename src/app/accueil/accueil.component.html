@@ -1,0 +1,386 @@
+<!-- search -->
+<div class="search-overlay">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="search-overlay-layer"></div>
+            <div class="search-overlay-layer"></div>
+            <div class="search-overlay-layer"></div>
+            <div class="search-overlay-close">
+                <span class="search-overlay-close-line"></span>
+                <span class="search-overlay-close-line"></span>
+            </div>
+            <div class="search-overlay-form">
+                <form>
+                    <input type="text" class="input-search" placeholder="Search here...">
+                    <button type="button"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Banner Area -->
+<section id="home_one_banner">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-12">
+                <div class="banner_one_text">
+                    <h1>Explore the world together</h1>
+                    <h3>Find awesome hotel</h3>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Form Area -->
+<section id="theme_search_form">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="theme_search_form_area">
+                    <div class="theme_search_form_tabbtn">
+                        <ul class="nav nav-tabs" role="tablist">
+                            <li class="nav-item" role="presentation">
+                                <button class="nav-link active" id="hotels-tab" data-bs-toggle="tab"
+                                    data-bs-target="#hotels" type="button" role="tab" aria-controls="hotels"
+                                    aria-selected="true">
+                                    <i class="fas fa-hotel"></i> Hotels
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                    <div class="tab-content" id="myTabContent">
+                        <div class="tab-pane fade show active" id="hotels" role="tabpanel" aria-labelledby="hotels-tab">
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="tour_search_form">
+
+                                        <form action="#!">
+                                            <div class="row">
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="flight_Search_boxed">
+                                                        <p>Filtered By Destination</p>
+                                                        <div class="search-container">
+                                                            <select [(ngModel)]="searchRegion" name="searchRegion"
+                                                                (change)="filterRegions()" style="width: 100%;">
+                                                                <option value="" disabled selected>Select region...
+                                                                </option>
+                                                                <option *ngFor="let region of regions"
+                                                                    [value]="region.name">{{ region.name }}</option>
+                                                            </select>
+                                                            <div class="suggestions" *ngIf="filteredRegions.length > 0">
+                                                                <ul>
+                                                                    <li *ngFor="let region of filteredRegions"
+                                                                        (click)="selectRegion(region)"
+                                                                        [ngClass]="{ 'selected': region.name === searchRegion }">
+                                                                        {{ region.name }}
+                                                                    </li>
+                                                                </ul>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-lg-6 col-md-6 col-sm-12 col-12">
+                                                    <div class="flight_Search_boxed">
+                                                        <p>Filtered By Stars</p>
+                                                        <div class="search-container">
+                                                            <select [(ngModel)]="searchStarsNumber"
+                                                                [ngModelOptions]="{standalone: true}"
+                                                                style="width: 100%;">
+                                                                <option value="" disabled selected>Select star number...</option>
+                                                                <option *ngFor="let i of [1, 2, 3, 4, 5]" [value]="i">{{
+                                                                    i }}</option>
+                                                            </select>
+
+
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-lg-12 col-md-12 col-sm-12 col-12">
+                                                    <a class="top_form_search_button" (click)="search()">
+                                                        <button class="btn btn_theme btn_md">Search</button>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </form>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section>
+<!-- popular destination area -->
+<section id="popular_destination" class="section_padding_bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="section_heading_five">
+                    <h5>Destination</h5>
+                    <h2>Popular destination</h2>
+                </div>
+            </div>
+        </div>
+        <div class="popular_destination_area">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-sm-6 col-12" *ngFor="let region of regions">
+                    <div class="popular_destination_card">
+                        <div class="popular_destination_img">
+                            <img [src]="region.image ? region.image : 'assets/img/default-image.jpg'" alt="Region Image"
+                                class="region-image">
+                            <div class="destination_ratings">
+                                <p><i class="fa fa-star"></i> <span>{{ region.score ? region.score : 'N/A' }}</span></p>
+                            </div>
+                        </div>
+
+                        <div class="popular_destination_text">
+                            <h5><a href="#">{{ region.name }}</a></h5>
+                            <p>{{ region.description }}</p>
+                            <a [routerLink]="['/topdestinations', region.id]">
+                                <img src="assets/img/icon/des-arrow.png" alt="icon">
+                            </a>
+
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- about section -->
+<section id="five_about_area" class="section_padding">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="five_about_left">
+                    <div class="section_heading_five">
+                        <h5>About us</h5>
+                        <h2>We create journeys for the excited travels
+                            and value for money</h2>
+                        <p>At Excited Travels, we are dedicated to crafting journeys that ignite your sense of adventure
+                            while delivering unbeatable value. Whether you're dreaming of a relaxing beach getaway, an
+                            exhilarating city escape, or an off-the-beaten-path exploration, we've got you covered</p>
+                    </div>
+                    <div class="about_five_info">
+                        <div class="about_five_item about_item_one">
+                            <div class="hotel_img">
+                                <img src="assets/img/icon/best-hotel.png" alt="icon">
+                            </div>
+                            <div class="about_five_text">
+                                <h3>Best hotels</h3>
+                                <p>Find your perfect home away from home with our curated selection of top-rated hotels.
+                                    From luxurious resorts to charming boutique accommodations, we offer something for
+                                    every traveler's taste and budget.</p>
+                            </div>
+                        </div>
+                        <div class="about_five_item">
+                            <div class="flight_img">
+                                <img src="assets/img/icon/cheaf-flight.png" alt="icon">
+                            </div>
+                            <div class="about_five_text">
+                                <h3>Cheap flights</h3>
+                                <p>Ready to take flight? Explore our range of affordable flight options and embark on
+                                    your next adventure without breaking the bank. With our competitive prices and
+                                    convenient booking process, reaching your dream destination has never been easier.
+
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="about_five_bottom">
+                        <div class="about_five_button">
+
+                            <a class="btn btn_theme btn_md" [routerLink]="['about']">Learn more</a>
+                        </div>
+                        <div class="about_five_client">
+                            <img src="assets/img/home-five/common/about_clients.png" alt="img">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="five_about_img">
+                    <img src="assets/img/home-five/common/about_five.png" alt="img">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- top place -->
+<section id="top_place" class="section_padding">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-12">
+                <div class="section_heading_five">
+                    <h5>Top places</h5>
+                    <h2>Top Hotels</h2>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12" *ngFor="let hotel of hotels">
+                <div class="common_card_five">
+                    <div class="common_card_five_img" (click)="navigateToHotelDetail(hotel.id)">
+                        <a>
+                            <img [src]="hotel.image" alt="Hotel Image">
+                        </a>
+                    </div>
+                    <div class="common_card_five_text">
+                        <ul class="common_card_five_list">
+                            <!-- Add dynamic data -->
+                            <li>{{ hotel.name }}</li>
+                        </ul>
+                        <h3><a href="tour-search.html">{{ hotel.name }}</a></h3>
+                        <p><i class="fas fa-map-marker-alt"></i>{{ hotel.city }}</p>
+                        <!-- Add hotel starnumber -->
+                        <p>{{ hotel.starnumber }} Stars</p>
+                        <div class="common_card_five_bottom">
+                            <div class="common_card_five_bottom_left">
+                                <!-- Add dynamic data -->
+                                <p>{{ hotel.review }}/5 Excellent</p>
+                            </div>
+                            <div class="common_card_five_bottom_right">
+                                <h4>{{ hotel.price }} DT <sub>/Per person</sub></h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+            <div class="col-12">
+                <div class="top_place_btn">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- why choose -->
+<section id="best_travel_section" class="section_padding_bottom">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="section_heading_five">
+                    <h5>How it works ?</h5>
+                    <h2>Generate revenue with us..</h2>
+
+                </div>
+                <div class="best_travel_list">
+                    <ul class="travel_list_item">
+                        <li><img src="assets/img/icon/theam-check.png" alt="icon">Sign up.
+                        </li>
+                        <li><img src="assets/img/icon/theam-check.png" alt="icon">Sign up through our affiliate
+                            networks.</li>
+                        <li><img src="assets/img/icon/theam-check.png" alt="icon">Promote with AndTour.
+                        </li>
+                        <li><img src="assets/img/icon/theam-check.png" alt="icon">Generate revenue.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 col-sm-12">
+                <div class="best_travel_img text-center">
+                    <img src="assets/img/home-five/common/best-travel.png" alt="img">
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-12 col-sm-12">
+                <div class="benifit_list_wrapper">
+                    <div class="benefit_list">
+                        <div class="location_img">
+                            <img src="assets/img/icon/locations.png" alt="icon">
+                        </div>
+                        <div class="benefit_text">
+                            <h3>Tour guide</h3>
+                            <p>Become a tour guide and explore the world with others!</p>
+                        </div>
+                    </div>
+                    <div class="benefit_list">
+                        <div class="price_img">
+                            <img src="assets/img/icon/prices.png" alt="icon">
+                        </div>
+                        <div class="benefit_text">
+                            <h3>Friendly price</h3>
+                            <p>
+                                Embark on unforgettable journeys with our tour guides, offering you enriching
+                                experiences at affordable prices. Discover hidden gems, immerse yourself in local
+                                culture, and create memories that will last a lifetime, all without breaking the bank.
+                            </p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Our partners Area -->
+<section id="our_partners" class="section_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="partner_slider_area owl-theme owl-carousel">
+                    <div class="partner_logo">
+                        <a href="#!"><img src="assets/img/partner/1.png" alt="logo"></a>
+                    </div>
+                    <div class="partner_logo">
+                        <a href="#!"><img src="assets/img/partner/2.png" alt="logo"></a>
+                    </div>
+                    <div class="partner_logo">
+                        <a href="#!"><img src="assets/img/partner/3.png" alt="logo"></a>
+                    </div>
+                    <div class="partner_logo">
+                        <a href="#!"><img src="assets/img/partner/4.png" alt="logo"></a>
+                    </div>
+                    <div class="partner_logo">
+                        <a href="#!"><img src="assets/img/partner/5.png" alt="logo"></a>
+                    </div>
+                    <div class="partner_logo">
+                        <a href="#!"><img src="assets/img/partner/6.png" alt="logo"></a>
+                    </div>
+                    <div class="partner_logo">
+                        <a href="#!"><img src="assets/img/partner/7.png" alt="logo"></a>
+                    </div>
+                    <div class="partner_logo">
+                        <a href="#!"><img src="assets/img/partner/8.png" alt="logo"></a>
+                    </div>
+                    <div class="partner_logo">
+                        <a href="#!"><img src="assets/img/partner/5.png" alt="logo"></a>
+                    </div>
+                    <div class="partner_logo">
+                        <a href="#!"><img src="assets/img/partner/3.png" alt="logo"></a>
+                    </div>
+                    <div class="partner_logo">
+                        <a href="#!"><img src="assets/img/partner/2.png" alt="logo"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
