@@ -1,5 +1,7 @@
-<h2 mat-dialog-title>{{ data ? 'Edit reservation' : 'Create reservation' }}</h2>
+<div class="custom-dialog-container">
 <mat-dialog-content>
+<h2 mat-dialog-title>{{ data ? 'Edit reservation' : 'Create reservation' }}</h2>
+
   <form [formGroup]="form">
     <mat-form-field appearance="fill">
       <mat-label>client </mat-label>
@@ -43,8 +45,10 @@
     </mat-form-field>
    
   </form>
-</mat-dialog-content>
+
 <mat-dialog-actions align="end">
   <button mat-button (click)="close()">Cancel</button>
   <button mat-button color="primary" (click)="save()" [disabled]="form.invalid">Save</button>
 </mat-dialog-actions>
+</mat-dialog-content>
+</div>

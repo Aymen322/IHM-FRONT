@@ -72,11 +72,9 @@ export class AdminRegionComponent  implements AfterViewInit, OnInit {
     dialogConfig.width = '600px';  // Adjust width as needed
     dialogConfig.panelClass = 'custom-dialog-container';  // Add this line
     const dialogRef = this.dialog.open(RegionFormComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(data => {
-      console.log("Dialog output:", data);
-      this.CS.createRegion(data).subscribe(() => {
+    dialogRef.afterClosed().subscribe(() => {   
         this.getRegions();
       });
-    });
+ 
   }
 }

@@ -41,18 +41,31 @@ export class ReservationFormComponent implements OnInit {
     if (this.form.valid) {
       const updatedReservationData = this.form.value;
       if (this.data && this.data.id) {
-        updatedReservationData.id = this.data.id; // Assurez-vous que l'ID du client est inclus dans les données à mettre à jour
+        // Si l'ID du client existe, mettez à jour le client
+        updatedReservationData.id = this.data.id;
+        this.RC.updateReservation(updatedReservationData).subscribe(
+          response => {
+            console.log('Client updated successfully!', response);
+            this.dialogRef.close(updatedReservationData); // Fermez la modal avec les nouvelles données du client
+          },
+          error => {
+            console.error('Error updating client:', error);
+            // Gérez l'erreur selon vos besoins (par exemple, affichez un message d'erreur à l'utilisateur)
+          }
+        );
+      } else {
+        // Si l'ID du client n'existe pas, créez un nouveau client
+        this.RC.createReservation(updatedReservationData).subscribe(
+          response => {
+            console.log('Client created successfully!', response);
+            this.dialogRef.close(updatedReservationData); // Fermez la modal avec les nouvelles données du client
+          },
+          error => {
+            console.error('Error creating client:', error);
+            // Gérez l'erreur selon vos besoins (par exemple, affichez un message d'erreur à l'utilisateur)
+          }
+        );
       }
-      this.RC.updateReservation(updatedReservationData).subscribe(
-        response => {
-          console.log('Reservation updated successfully!', response);
-          this.dialogRef.close(updatedReservationData); // Fermez la modal avec les nouvelles données du client
-        },
-        error => {
-          console.error('Error updating Reservation:', error);
-          // Gérez l'erreur selon vos besoins (par exemple, affichez un message d'erreur à l'utilisateur)
-        }
-      );
     }
   }
 

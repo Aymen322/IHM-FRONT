@@ -74,11 +74,9 @@ export class AdminClient1Component implements AfterViewInit, OnInit {
     dialogConfig.autoFocus = true;
     dialogConfig.width = '600px'; // Adjust the width as needed
     const dialogRef = this.dialog.open(ClientformComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(data => {
-      console.log("Dialog output:", data);
-      this.CS.createClient(data).subscribe(() => {
+    dialogRef.afterClosed().subscribe(() => {
         this.getClients();
-      });
-    });
+  });
+ 
   }
 }

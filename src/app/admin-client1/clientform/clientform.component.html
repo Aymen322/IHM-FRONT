@@ -3,6 +3,7 @@
     <h2 mat-dialog-title>{{ data ? 'Edit Client' : 'Create Client' }} </h2>
     <br><br>
   <form [formGroup]="form">
+    <div>
     <mat-form-field appearance="fill">
       <mat-label>First Name</mat-label>
       <input matInput formControlName="firstname" placeholder="Enter first name">
@@ -10,7 +11,8 @@
         First Name is required
       </mat-error>
     </mat-form-field>
-
+  </div>
+  <div>
     <mat-form-field appearance="fill">
       <mat-label>Last Name</mat-label>
       <input matInput formControlName="lastname" placeholder="Enter last name">
@@ -18,7 +20,7 @@
         Last Name is required
       </mat-error>
     </mat-form-field>
-
+ 
     <mat-form-field appearance="fill">
       <mat-label>Email</mat-label>
       <input matInput formControlName="email" placeholder="Enter email">
@@ -29,7 +31,8 @@
         Enter a valid email
       </mat-error>
     </mat-form-field>
-
+  </div>
+  <div>
     <mat-form-field appearance="fill">
       <mat-label>Phone Number</mat-label>
       <input matInput formControlName="phonenumber" placeholder="Enter phone number">
@@ -37,6 +40,7 @@
         Phone Number is required
       </mat-error>
     </mat-form-field>
+  </div>
   </form>
 
 <mat-dialog-actions align="end">

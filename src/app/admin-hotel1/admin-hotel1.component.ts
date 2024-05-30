@@ -70,11 +70,8 @@ export class AdminHotel1Component implements AfterViewInit, OnInit {
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
     const dialogRef = this.dialog.open(HotelformComponent, dialogConfig);
-    dialogRef.afterClosed().subscribe(data => {
-      console.log("Dialog output:", data);
-      this.HS.createHotel(data).subscribe(() => {
+    dialogRef.afterClosed().subscribe(() => {
         this.getHotels();
       });
-    });
   }
 }
