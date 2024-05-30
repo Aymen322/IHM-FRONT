@@ -1,0 +1,88 @@
+<div class="container">
+  <br><br><br><br>
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="/admin-dashboard">Admin Dashboard</a>
+      </li>
+      <li>
+        <a routerLink="/admin-clients">Clients</a>
+      </li>
+      <li>
+        <a routerLink="/admin-hotels">Hotels</a>
+      </li>
+      <li>
+        <a routerLink="/admin-regions">Regions</a>
+      </li>
+      <li>
+        <a routerLink="/admin-reservation">Reservations</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="main-content">
+    <div class="header">
+      <div fxLayout="row" fxLayoutAlign="end center">
+        <button style="color: blueviolet;" (click)="openDialog()"><i class="bi bi-plus-circle">Create New</i> </button>
+      </div>
+    </div>
+    
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 custom-table">
+      <!-- First Name Column -->
+      <ng-container matColumnDef="firstname">
+        <th mat-header-cell *matHeaderCellDef class="header-cell center-text"><i class="bi bi-pencil">First Name</i>  </th>
+        <td mat-cell *matCellDef="let element" class="center-text"> {{element.firstname}} </td>
+      </ng-container>
+    
+      <!-- Last Name Column -->
+      <ng-container matColumnDef="lastname">
+        <th mat-header-cell *matHeaderCellDef class="header-cell center-text"><i class="bi bi-pencil">Last Name</i></th>
+        <td mat-cell *matCellDef="let element" class="center-text"> {{element.lastname}} </td>
+      </ng-container>
+    
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef class="header-cell center-text"><i class="bi bi-pencil">Email</i></th>
+        <td mat-cell *matCellDef="let element" class="center-text"> {{element.email}} </td>
+      </ng-container>
+    
+      <!-- Phone Number Column -->
+      <ng-container matColumnDef="phonenumber">
+        <th mat-header-cell *matHeaderCellDef class="header-cell center-text"> <i class="bi bi-pencil">Phone Number</i></th>
+        <td mat-cell *matCellDef="let element" class="center-text"> {{element.phonenumber}} </td>
+      </ng-container>
+    
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef class="header-cell center-text"> Action </th>
+        <td mat-cell *matCellDef="let element" class="action-cell center-text">
+          <button mat-icon-button (click)="onEdit(element.id)">
+            <i class="bi bi-pencil"></i>
+          </button>
+          <button mat-icon-button (click)="onDelete(element.id)">
+            <i class="bi bi-trash"></i>
+          </button>
+        </td>
+      </ng-container>
+    
+         
+    <tbody>
+      <tr *ngFor="let element of dataSource.data">
+         <td>{{ element.firstname}}</td>
+         <td>{{ element.lastname}}</td>
+         <td>{{ element.email}}</td>
+         <td>{{ element.phonenumber}}</td>
+     </tr>
+         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+     
+     
+     
+     
+     </tbody>
+    </table>
+  
+    <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+  </div>
+</div>

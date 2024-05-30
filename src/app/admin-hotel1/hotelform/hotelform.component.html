@@ -1,0 +1,86 @@
+
+<div class="custom-dialog-container">
+  <h2 mat-dialog-title>{{ data ? 'Edit Hotel' : 'Create Hotel' }}</h2>
+  <mat-dialog-content>
+    <form [formGroup]="form">
+      <mat-form-field appearance="fill">
+        
+        <input matInput formControlName="name" placeholder="Enter name">
+        <mat-error *ngIf="form.controls['name'].hasError('required')">
+          Name is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+       
+        <input matInput formControlName="description" placeholder="Enter description">
+        <mat-error *ngIf="form.controls['description'].hasError('required')">
+          Description is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        
+        <input matInput formControlName="image" placeholder="Enter image URL">
+        <mat-error *ngIf="form.controls['image'].hasError('required')">
+          Image URL is required
+        </mat-error>
+        <mat-error *ngIf="form.controls['image'].hasError('pattern')">
+          Enter a valid URL
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        
+        <input matInput formControlName="contact_email" placeholder="Enter contact email">
+        <mat-error *ngIf="form.controls['contact_email'].hasError('required')">
+          Contact email is required
+        </mat-error>
+        <mat-error *ngIf="form.controls['contact_email'].hasError('email')">
+          Enter a valid email
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        
+        <input matInput formControlName="contact_phone" placeholder="Enter contact phone">
+        <mat-error *ngIf="form.controls['contact_phone'].hasError('required')">
+          Contact phone is required
+        </mat-error>
+        <mat-error *ngIf="form.controls['contact_phone'].hasError('pattern')">
+          Enter a valid phone number
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        
+        <input matInput formControlName="price" placeholder="Enter price" type="number">
+        <mat-error *ngIf="form.controls['price'].hasError('required')">
+          Price is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+       
+        <input matInput formControlName="starnumber" placeholder="Enter star number" type="number">
+        <mat-error *ngIf="form.controls['starnumber'].hasError('required')">
+          Star number is required
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        
+        <input matInput formControlName="city" placeholder="Enter city">
+        <mat-error *ngIf="form.controls['city'].hasError('required')">
+          City is required
+        </mat-error>
+      </mat-form-field>
+    </form>
+  </mat-dialog-content>
+  <div>
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="close()">Cancel</button>
+    <button mat-button color="primary" (click)="save()" [disabled]="form.invalid">Save</button>
+  </mat-dialog-actions>
+</div>
+

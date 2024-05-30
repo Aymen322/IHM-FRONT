@@ -1,0 +1,51 @@
+<h2 mat-dialog-title>{{ data ? 'Edit Hotel' : 'Create Hotel' }}</h2>
+<mat-dialog-content>
+  <form [formGroup]="form">
+    <mat-form-field appearance="fill">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter name">
+      <mat-error *ngIf="form.controls['name'].hasError('required')">
+        Name is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Description</mat-label>
+      <input matInput formControlName="description" placeholder="Enter description">
+      <mat-error *ngIf="form.controls['description'].hasError('required')">
+        Description is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Image URL</mat-label>
+      <input matInput formControlName="image" placeholder="Enter image URL">
+      <mat-error *ngIf="form.controls['image'].hasError('required')">
+        Image URL is required
+      </mat-error>
+      <mat-error *ngIf="form.controls['image'].hasError('pattern')">
+        Enter a valid URL
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>score</mat-label>
+      <input matInput formControlName="score" placeholder="Enter score">
+      <mat-error *ngIf="form.controls['score'].hasError('required')">
+        score is required
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label>hotels</mat-label>
+      <input matInput formControlName="hotels" placeholder="Enter hotels" >
+      <mat-error *ngIf="form.controls['hotels'].hasError('required')">
+        hotels is required
+      </mat-error>
+    </mat-form-field>
+  </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button (click)="close()">Cancel</button>
+  <button mat-button color="primary" (click)="save()" [disabled]="form.invalid">Save</button>
+</mat-dialog-actions>

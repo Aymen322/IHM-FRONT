@@ -1,0 +1,124 @@
+<!-- admin-dashboard.component.html -->
+<div class="container">
+    <br><br><br><br>
+    <!-- Sidebar -->
+    <div id="sidebar-wrapper">
+      <ul class="sidebar-nav">
+        <li class="sidebar-brand">
+          <a href="/admin-dashboard1">Admin Dashboard</a>
+        </li>
+        <li>
+          <a routerLink="/admin-clients">Clients</a>
+        </li>
+        <li>
+          <a routerLink="/admin-hotels">Hotels</a>
+        </li>
+        <li>
+          <a routerLink="/admin-regions">Regions</a>
+        </li>
+        <li>
+          <a routerLink="/admin-reservations">Reservations</a>
+        </li>
+      </ul>
+    </div>
+    <div class="container">
+   <div class="row">
+    <div class="col-md-6">
+          <!-- Partie du graphique 1 -->
+          <div class="card">
+            <div class="card-body">
+         <div fxLayout="row" fxLayoutAlign="center stretch">
+        <mat-card class="col1">
+        <mat-card-header>
+          <div fxLayout="column" fxLayoutAlign="space-between center">
+            <mat-card-title>Clients</mat-card-title>
+            <mat-card-content>{{ nb_Clients }}</mat-card-content>
+          </div>
+        </mat-card-header>
+      </mat-card>
+  
+      <mat-card class="col2">
+        <mat-card-header>
+          <div fxLayout="column" fxLayoutAlign="space-between center">
+            <mat-card-title>Hotels</mat-card-title>
+            <mat-card-content>{{ nb_Hotels }}</mat-card-content>
+          </div>
+        </mat-card-header>
+      </mat-card>
+  
+      <mat-card class="col3">
+        <mat-card-header>
+          <div fxLayout="column" fxLayoutAlign="space-between center">
+            <mat-card-title>Regions</mat-card-title>
+            <mat-card-content>{{ nb_Regions }}</mat-card-content>
+          </div>
+        </mat-card-header>
+      </mat-card>
+  
+      <mat-card class="col4">
+        <mat-card-header>
+          <div fxLayout="column" fxLayoutAlign="space-between center">
+            <mat-card-title>Reservations</mat-card-title>
+            <mat-card-content>{{ nb_Reservations }}</mat-card-content>
+          </div>
+        </mat-card-header>
+      </mat-card>
+    </div>
+  </div>
+</div>
+</div>
+<br>
+<div class="row">
+  <div class="col-md-6">
+    <!-- Partie des graphiques 2 et 3 -->
+    <div class="row">
+      <div class="col-md-6">
+        <!-- Partie du graphique 2 -->
+        <div class="card">
+          <div class="card-header">
+            Reservations by Hotel
+          </div>
+          <div class="card-body">
+            <!-- Bar Chart -->
+            <mat-card class="col">
+              <mat-card-content>
+                <canvas baseChart
+                [type]="'bar'"
+          [datasets]="barChartData"
+          [labels]="barChartLabels"
+          [options]="chartOptionspie"
+          [legend]="barChartLegend"
+          >
+        </canvas>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+      
+      <div class="col-md-6">
+        <!-- Partie du graphique 3 -->
+        <div class="card">
+          <div class="card-header">
+            Hotels by Region
+          </div>
+          <div class="card-body">
+            <!-- Line Chart -->
+            <mat-card class="col">
+              <mat-card-content>
+                <canvas baseChart class=" tailLine"
+                [type]="'polarArea'"
+          [datasets]="lineChartData"
+          [labels]="chartLabels"
+          [options]="chartOptions"
+          >
+        </canvas>
+              </mat-card-content>
+            </mat-card>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

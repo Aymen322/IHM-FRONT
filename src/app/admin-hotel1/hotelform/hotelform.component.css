@@ -1,0 +1,27 @@
+.custom-dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: var(--custom-top, 50%);
+    left: var(--custom-left, 50%);
+    transform: translate(-50%, -50%);
+    margin: 0; /* Reset margin */
+    padding: 0; /* Reset padding */
+    background-color: #fff; /* Adjust background color as needed */
+  }
+  .custom-dialog-container {
+    padding: 50px;
+  }
+  
+  .custom-dialog-container mat-form-field {
+    display: block;
+    margin-bottom: 20px;
+  }
+  
+  .mat-dialog-actions {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+  }
+  

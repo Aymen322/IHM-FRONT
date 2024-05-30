@@ -1,0 +1,129 @@
+/* client.component.css */
+
+#sidebar-wrapper {
+    background-color: transparent; /* Make the sidebar transparent */
+    position: absolute; /* Position the sidebar */
+    top: 0; /* Align the sidebar to the top */
+    left: 0; /* Align the sidebar to the left */
+    width: 200px; /* Set the width of the sidebar */
+    height: 100%; /* Make the sidebar full height */
+  }
+  
+  .sidebar-nav {
+    padding-left: 0;
+    list-style: none;
+    margin-top: 120px;
+  }
+  
+  .sidebar-nav li {
+    display: block;
+  }
+  
+  .sidebar-nav li a {
+    display: block;
+    padding: 10px;
+    text-decoration: none;
+    color: #333;
+  }
+  
+  .sidebar-nav li a:hover {
+    background-color: #ddd;
+  }
+  
+  .container {
+    margin-left: 220px; /* Adjust to avoid overlap with the sidebar */
+    padding: 20px;
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .add-client {
+    margin-bottom: 15px;
+  }
+  
+  .search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 10px;
+  }
+  
+  .main-content {
+    margin-top: 20px;
+  }
+  
+  .mat-elevation-z8 {
+    border: 1px solid #ccc; /* Border style */
+    border-radius: 5px; /* Border radius */
+    padding: 20px; /* Padding inside the border */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Box shadow for elevation effect */
+    margin-left: 20px; /* Adjust as needed */
+    margin-top: 10px;
+  }
+  
+  .mat-header-row {
+    background-color: #007bff; /* Change to your desired color */
+    color: white; /* Change text color to ensure visibility */
+  }
+  
+  .icon {
+    cursor: pointer;
+    margin: 0 10px;
+    color: #555; /* Default color */
+  }
+  
+  .icon:hover {
+    color: #007bff; /* Change color on hover */
+  }
+  
+  table {
+    width: 80%; /* Adjust to make the table smaller */
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  th.mat-header-cell, td.mat-cell {
+    padding: 8px; /* Adjust padding for table cells */
+  }
+  
+  .mat-paginator {
+    margin-top: 20px; /* Adjust margin to align paginator properly */
+  }
+
+  .custom-table {
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse; /* Ensure borders don't overlap */
+  }
+
+  .header-cell {
+    font-weight: bold;
+    text-align: center;
+    background-color: #f3f3f5;
+  }
+
+  mat-header-row, mat-row {
+    display: flex;
+    justify-content: space-between;
+  }
+  .custom-dialog-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .mat-dialog-container {
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    
+  }
+
+
+ 
+  

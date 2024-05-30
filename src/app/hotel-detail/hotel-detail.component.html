@@ -1,0 +1,179 @@
+<div class="search-overlay">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="search-overlay-layer"></div>
+            <div class="search-overlay-layer"></div>
+            <div class="search-overlay-layer"></div>
+            <div class="search-overlay-close">
+                <span class="search-overlay-close-line"></span>
+                <span class="search-overlay-close-line"></span>
+            </div>
+            <div class="search-overlay-form">
+                <form>
+                    <input type="text" class="input-search" placeholder="Search here...">
+                    <button type="button"><i class="fas fa-search"></i></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Common Banner Area -->
+<section id="common_banner">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="common_bannner_text">
+                    <h2>Hotel Details</h2>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><span><i class="fas fa-circle"></i></span> Hotels Details</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Tour Search Areas -->
+<section id="tour_details_main" class="section_padding">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="tour_details_leftside_wrapper">
+                    <div class="tour_details_heading_wrapper">
+                        <div class="tour_details_top_heading">
+                            <h2>{{ hotel.name }}</h2>
+                            <h5><i class="fas fa-map-marker-alt"></i> {{ hotel.city }}</h5>
+                        </div>
+                        <div class="tour_details_top_heading_right stylish-heading">
+                            <h4>{{ hotel.starnumber }} STARS</h4>
+                            <H3>({{ hotel.review }} reviews)</H3>
+                        </div>
+                        </div>
+                    <div class="tour_details_img_wrapper">
+                        <div class="slider slider-for">
+                            <div>
+                                <img [src]="hotel.image" alt="Hotel Image">
+                            </div>
+                        </div>
+                   
+                    </div>
+                    <div class="tour_details_boxed">
+                        <h3 class="heading_theme">Overview</h3>
+                        <div class="tour_details_boxed_inner">
+                            <p>{{ hotel.description }}</p>
+                        </div>
+                    </div>
+                    
+                
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="tour_details_right_sidebar_wrapper">
+                    <div class="tour_detail_right_sidebar">
+                        <div class="tour_details_right_boxed">
+                            <div class="tour_details_right_box_heading">
+                                <h3>Standard package</h3>
+                            </div>
+                            <div class="valid_date_area">
+                            </div>
+                            <div class="tour_package_details_bar_list">
+                                <h5>Package details</h5>
+                                <ul>
+                                    <li><i class="fas fa-circle"></i>Buffet breakfast as per the Itinerary</li>
+                                    <li><i class="fas fa-circle"></i>Visit eight villages showcasing Polynesian
+                                        culture
+                                    </li>
+                                    <li><i class="fas fa-circle"></i>Complimentary Camel safari, Bonfire,</li>
+                                    <li><i class="fas fa-circle"></i>All toll tax, parking, fuel, and driver
+                                        allowances
+                                    </li>
+                                    <li><i class="fas fa-circle"></i>Comfortable and hygienic vehicle</li>
+                                </ul>
+                            </div>
+                            <div class="tour_package_details_bar_price">
+                                <h5>Price</h5>
+                                <div class="tour_package_bar_price">
+                                    <h6>$ {{ hotel.promotion ? hotel.promotion.toLocaleString() : '0' }}  </h6> <!-- Display hotel promotion, formatted with commas, defaulting to 0 if not available -->
+                                    <h3>$ {{ hotel.price ? hotel.price.toLocaleString() : '0' }}<sub>/Per person</sub></h3> 
+                                </div>
+                            </div>
+                            
+                            
+                        </div>
+                        <div class="tour_select_offer_bar_bottom">
+                            <button class="btn btn_theme btn_md w-100" data-bs-toggle="offcanvas"
+                                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Select
+                                offer</button>
+                        </div>
+                    </div>
+                    <div class="tour_detail_right_sidebar">
+                        <div class="tour_details_right_boxed">
+                            <div class="tour_details_right_box_heading">
+                                <h3>Why choose us</h3>
+                            </div>
+
+                            <div class="tour_package_details_bar_list first_child_padding_none">
+                                <ul>
+                                    <li><i class="fas fa-circle"></i>Buffet breakfast as per the Itinerary</li>
+                                    <li><i class="fas fa-circle"></i>Visit eight villages showcasing Polynesian
+                                        culture
+                                    </li>
+                                    <li><i class="fas fa-circle"></i>Complimentary Camel safari, Bonfire,</li>
+                                    <li><i class="fas fa-circle"></i>All toll tax, parking, fuel, and driver
+                                        allowances
+                                    </li>
+                                    <li><i class="fas fa-circle"></i>Comfortable and hygienic vehicle</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</section>
+
+
+  <!-- Offcanvas Area -->
+  <div class="offcanvas select_offer_modal offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas-header">
+        <h5 id="offcanvasRightLabel">Book now</h5>
+        <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+    </div>
+    <div  class="offcanvas-body">
+        <div class="side_canvas_wrapper">
+            <!-- Client information form -->
+            <form (ngSubmit)="onSubmit()" [formGroup]="bookingForm" class="booking-form">
+                <div class="form-group">
+                    <label for="firstname">First Name</label>
+                    <input type="text" id="firstname" class="form-control" formControlName="firstname">
+                </div>
+                <div class="form-group">
+                    <label for="lastname">Last Name</label>
+                    <input type="text" id="lastname" class="form-control" formControlName="lastname">
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" class="form-control" formControlName="email">
+                </div>
+                <div class="form-group">
+                    <label for="phonenumber">Phone Number</label>
+                    <input type="tel" id="phonenumber" class="form-control" formControlName="phonenumber">
+                </div>
+                <!-- Reservation information -->
+                <div class="form-group">
+                    <label for="check_in_date">Check-in Date</label>
+                    <input type="date" id="check_in_date" class="form-control" formControlName="check_in_date">
+                </div>
+                <div class="form-group">
+                    <label for="check_out_date">Check-out Date</label>
+                    <input type="date" id="check_out_date" class="form-control" formControlName="check_out_date">
+                </div>
+                <!-- Proceed to booking button -->
+                <button type="submit" class="btn btn-theme btn-md w-100">Proceed to Booking</button>
+            </form>
+        </div>
+    </div>
+    
+</div>
