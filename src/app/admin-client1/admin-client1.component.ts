@@ -21,14 +21,14 @@ export class AdminClient1Component implements AfterViewInit, OnInit {
   isModalOpen: boolean = false;
 
   constructor(public CS: ClientService, private dialog: MatDialog , private overlay: Overlay) { }
+  ngOnInit(): void {
+    this.getClients(); 
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  ngOnInit(): void {
-    this.getClients(); 
-  }
 
   onEdit(id: number): void {
     const dialogConfig = new MatDialogConfig();
@@ -45,7 +45,8 @@ export class AdminClient1Component implements AfterViewInit, OnInit {
 
   getClients(): void {
     this.CS.getClients().subscribe((r) => {
-      this.dataSource = new MatTableDataSource<Client>(r);
+      this.dataSource.data = r;
+      this.dataSource.paginator = this.paginator;
     });
   }
 

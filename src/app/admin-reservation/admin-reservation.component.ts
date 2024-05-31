@@ -46,7 +46,8 @@ export class AdminReservationComponent implements AfterViewInit, OnInit {
 
   getReservations(): void {
     this.RS.getReservations().subscribe((r) => {
-      this.dataSource = new MatTableDataSource<Reservation>(r);
+      this.dataSource.data = r;
+      this.dataSource.paginator = this.paginator;
     });
   }
 

@@ -10,21 +10,33 @@ import { ConfirmDialogComponent } from '../admin-client1/confirm-dialog/confirm-
 @Component({
   selector: 'app-admin-hotel1',
   templateUrl: './admin-hotel1.component.html',
-  styleUrl: './admin-hotel1.component.css'
+  styleUrls: ['./admin-hotel1.component.css']
 })
 export class AdminHotel1Component implements AfterViewInit, OnInit {
-  displayedColumns: string[] = ['name', 'description', 'image', 'contact_email','contact_phone', 'price', 'starnumber', 'city', 'action'];
+  displayedColumns: string[] = ['image', 'name', 'description', 'contact_email', 'contact_phone', 'price', 'starnumber', 'city', 'action'];
   dataSource = new MatTableDataSource<Hotel>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  constructor(public HS: HotelService, private dialog: MatDialog) { }
+  constructor(public HS: HotelService, private dialog: MatDialog) {}
+
+  ngOnInit(): void {
+    this.getHotels();
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
 
-  ngOnInit(): void {
-    this.getHotels(); 
+  getHotels(): void {
+    this.HS.getHotels().subscribe((r) => {
+      this.dataSource.data = r;
+      this.dataSource.paginator = this.paginator; // S'assurer que le paginator est assigné après la mise à jour des données
+    });
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   onEdit(id: number): void {
@@ -36,18 +48,8 @@ export class AdminHotel1Component implements AfterViewInit, OnInit {
       const dialogRef = this.dialog.open(HotelformComponent, dialogConfig);
       dialogRef.afterClosed().subscribe(() => {
         this.getHotels();
-      })
+      });
     });
-  }
-  getHotels(): void {
-    this.HS.getHotels().subscribe((r) => {
-      this.dataSource = new MatTableDataSource<Hotel>(r);
-    });
-  }
-
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
   onDelete(id: number): void {
@@ -71,7 +73,7 @@ export class AdminHotel1Component implements AfterViewInit, OnInit {
     dialogConfig.autoFocus = true;
     const dialogRef = this.dialog.open(HotelformComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(() => {
-        this.getHotels();
-      });
+      this.getHotels();
+    });
   }
 }

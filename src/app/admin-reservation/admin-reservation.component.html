@@ -23,8 +23,13 @@
   
     <div class="main-content">
       <div class="header">
-        <div fxLayout="row" fxLayoutAlign="end center">
-          <button  style="color: blueviolet;" (click)="openDialog()"><i class="bi bi-plus-circle"></i>Create New</button>
+        <div fxLayout="row" fxLayoutAlign="space-between center" class="header-content">
+        
+          <button style="color: blueviolet;" (click)="openDialog()"><i class="bi bi-plus-circle">Create New</i></button>
+  
+          <mat-form-field class="filter-field">
+            <input matInput (keyup)="applyFilter($event)" placeholder="Enter filter value">
+          </mat-form-field>
         </div>
       </div>
   

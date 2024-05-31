@@ -110,6 +110,14 @@ mat-header-row, mat-row {
   display: flex;
   justify-content: space-between;
 }
+.filter-field {
+  width: 300px;
+}
+
+mat-form-field {
+  margin-right: 16px;
+}
+
 
 
 

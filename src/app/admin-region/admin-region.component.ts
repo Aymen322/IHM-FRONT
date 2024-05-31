@@ -41,7 +41,8 @@ export class AdminRegionComponent  implements AfterViewInit, OnInit {
 
   getRegions(): void {
     this.CS.getRegions().subscribe((r) => {
-      this.dataSource = new MatTableDataSource<Region>(r);
+      this.dataSource.data = r;
+      this.dataSource.paginator = this.paginator;
     });
   }
 
