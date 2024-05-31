@@ -18,6 +18,7 @@ export class AdminClient1Component implements AfterViewInit, OnInit {
   displayedColumns: string[] = ['firstname', 'lastname', 'email', 'phonenumber', 'action'];
   dataSource = new MatTableDataSource<Client>();
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  isModalOpen: boolean = false;
 
   constructor(public CS: ClientService, private dialog: MatDialog , private overlay: Overlay) { }
 
@@ -58,10 +59,14 @@ export class AdminClient1Component implements AfterViewInit, OnInit {
       width: '400px', // Adjust width as needed
       height: '300px',
     });
-
+  
+    dialogRef.afterOpened().subscribe(() => {
+      this.isModalOpen = true;
+    });
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.CS.deleteClient(id).subscribe(() => {
+          this.isModalOpen = false;
           this.getClients();
         });
       }
@@ -71,7 +76,6 @@ export class AdminClient1Component implements AfterViewInit, OnInit {
   openDialog(): void {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
-    dialogConfig.autoFocus = true;
     dialogConfig.width = '600px'; // Adjust the width as needed
     const dialogRef = this.dialog.open(ClientformComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(() => {

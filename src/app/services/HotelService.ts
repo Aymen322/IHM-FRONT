@@ -45,9 +45,7 @@ export class HotelService {
   getHotelById(id: number): Observable<Hotel> {
     return this.http.get<Hotel>(`${this.baseUrl}/${id}`);
   }
-  getHotelsCount(): Observable<number> {
-    return this.http.get<number>(`${this.baseUrl}/count`);
-  }
+ 
   getHotelsByReg(): Observable<{ region: string, count: number }[]> {
     return this.http.get<{ region: string, count: number }[]>(`${this.baseUrl}/by-region`);
   }

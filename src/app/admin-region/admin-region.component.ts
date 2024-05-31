@@ -69,8 +69,6 @@ export class AdminRegionComponent  implements AfterViewInit, OnInit {
     const dialogConfig = new MatDialogConfig();
     dialogConfig.disableClose = true;
     dialogConfig.autoFocus = true;
-    dialogConfig.width = '600px';  // Adjust width as needed
-    dialogConfig.panelClass = 'custom-dialog-container';  // Add this line
     const dialogRef = this.dialog.open(RegionFormComponent, dialogConfig);
     dialogRef.afterClosed().subscribe(() => {   
         this.getRegions();

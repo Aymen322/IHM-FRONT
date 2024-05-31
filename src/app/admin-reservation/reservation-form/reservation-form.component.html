@@ -1,54 +1,55 @@
-<div class="custom-dialog-container">
-<mat-dialog-content>
+<div class="blur-background" >
+  <div class="custom-dialog-container">
+    <mat-dialog-content class="dialog-content">
 <h2 mat-dialog-title>{{ data ? 'Edit reservation' : 'Create reservation' }}</h2>
-
-  <form [formGroup]="form">
+<form [formGroup]="form" class="form">
+  <div class="form-group">
     <mat-form-field appearance="fill">
-      <mat-label>client </mat-label>
+      <label>client </label>
       <input matInput formControlName="client_id" placeholder="Enter client_id">
       <mat-error *ngIf="form.controls['client_id'].hasError('required')">
-        client is required
       </mat-error>
     </mat-form-field>
-
+  </div>
+  <div class="form-group">
     <mat-form-field appearance="fill">
-      <mat-label>hotel </mat-label>
+      <label>hotel </label>
       <input matInput formControlName="hotel_id" placeholder="Enter hotel_id">
       <mat-error *ngIf="form.controls['hotel_id'].hasError('required')">
-        hotel is required
       </mat-error>
     </mat-form-field>
-
+  </div>
+  <div class="form-group">
     <mat-form-field appearance="fill">
-      <mat-label>status</mat-label>
+      <label>status</label>
       <input matInput formControlName="status" placeholder="Enter status">
       <mat-error *ngIf="form.controls['status'].hasError('required')">
-        status is required
       </mat-error>
-     
     </mat-form-field>
-
+  </div>
+  <div class="form-group">
     <mat-form-field appearance="fill">
-        
+      <label>check_in_date</label>
         <input matInput [matDatepicker]="picker" formControlName="check_in_date" placeholder="Enter check_in_date">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-
+  </div>
+  <div class="form-group">
     <mat-form-field appearance="fill">
-        
+      <label>check_out_date</label>
         <input matInput [matDatepicker]="picker" formControlName="check_out_date" placeholder="Enter check_out_date">
         <mat-hint>MM/DD/YYYY</mat-hint>
         <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
         <mat-datepicker #picker></mat-datepicker>
     </mat-form-field>
-   
+  </div>
   </form>
 
 <mat-dialog-actions align="end">
-  <button mat-button (click)="close()">Cancel</button>
-  <button mat-button color="primary" (click)="save()" [disabled]="form.invalid">Save</button>
+  <button (click)="close()">Cancel</button>
+  <button color="primary" (click)="save()" [disabled]="form.invalid">Save</button>
 </mat-dialog-actions>
 </mat-dialog-content>
-</div>
+</div></div>

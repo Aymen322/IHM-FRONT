@@ -1,51 +1,43 @@
+<div class="blur-background" >
 <div class="custom-dialog-container">
-  <mat-dialog-content>
-    <h2 mat-dialog-title>{{ data ? 'Edit Client' : 'Create Client' }} </h2>
-    <br><br>
-  <form [formGroup]="form">
-    <div>
-    <mat-form-field appearance="fill">
-      <mat-label>First Name</mat-label>
-      <input matInput formControlName="firstname" placeholder="Enter first name">
-      <mat-error *ngIf="form.controls['firstname'].hasError('required')">
-        First Name is required
-      </mat-error>
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label>Last Name</mat-label>
-      <input matInput formControlName="lastname" placeholder="Enter last name">
-      <mat-error *ngIf="form.controls['lastname'].hasError('required')">
-        Last Name is required
-      </mat-error>
-    </mat-form-field>
- 
-    <mat-form-field appearance="fill">
-      <mat-label>Email</mat-label>
-      <input matInput formControlName="email" placeholder="Enter email">
-      <mat-error *ngIf="form.controls['email'].hasError('required')">
-        Email is required
-      </mat-error>
-       <mat-error *ngIf="form.controls['email'].hasError('email')">
-        Enter a valid email
-      </mat-error>
-    </mat-form-field>
-  </div>
-  <div>
-    <mat-form-field appearance="fill">
-      <mat-label>Phone Number</mat-label>
-      <input matInput formControlName="phonenumber" placeholder="Enter phone number">
-      <mat-error *ngIf="form.controls['phonenumber'].hasError('required')">
-        Phone Number is required
-      </mat-error>
-    </mat-form-field>
-  </div>
-  </form>
+  <mat-dialog-content class="dialog-content">
+    <h2 mat-dialog-title>{{ data ? 'Edit Client' : 'Create Client' }}</h2>
+    <form [formGroup]="form" class="form">
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <label>First Name</label>
+          <input matInput formControlName="firstname" placeholder="Enter first name">
+          <mat-error *ngIf="form.controls['firstname'].hasError('required')"></mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <label>Last Name</label>
+          <input matInput formControlName="lastname" placeholder="Enter last name">
+          <mat-error *ngIf="form.controls['lastname'].hasError('required')"></mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <label>Email</label>
+          <input matInput formControlName="email" placeholder="Enter email">
+          <mat-error *ngIf="form.controls['email'].hasError('required')"></mat-error>
+          <mat-error *ngIf="form.controls['email'].hasError('email')"></mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-group">
+        <mat-form-field appearance="fill">
+          <label>Phone Number</label>
+          <input matInput formControlName="phonenumber" placeholder="Enter phone number">
+          <mat-error *ngIf="form.controls['phonenumber'].hasError('required')"></mat-error>
+        </mat-form-field>
+      </div>
+    </form>
 
-<mat-dialog-actions align="end">
-  <button mat-button (click)="close()">Cancel</button>
-  <button mat-button color="primary" (click)="save()" [disabled]="form.invalid">Save</button>
-</mat-dialog-actions>
-</mat-dialog-content>
+    <mat-dialog-actions align="end">
+      <button  (click)="close()">Cancel</button>
+      <button  color="primary" (click)="save()" [disabled]="form.invalid">Save</button>
+    </mat-dialog-actions>
+  </mat-dialog-content>
+</div>
 </div>

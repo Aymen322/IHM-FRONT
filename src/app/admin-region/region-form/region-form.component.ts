@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { RegionService } from '../../services/RegionService';
+import { Region } from '../../models/Region';
 
 @Component({
   selector: 'app-region-form',
@@ -14,7 +15,7 @@ export class RegionFormComponent implements OnInit {
   constructor(
     private dialogRef: MatDialogRef<RegionFormComponent>, 
     private formBuilder: FormBuilder, 
-    @Inject(MAT_DIALOG_DATA) public data: any,
+    @Inject(MAT_DIALOG_DATA) public data: Region,
     private Reg : RegionService
   ) {}
 
@@ -41,11 +42,11 @@ export class RegionFormComponent implements OnInit {
         updatedRegionData.id = this.data.id;
         this.Reg.updateRegion(updatedRegionData).subscribe(
           response => {
-            console.log('Client updated successfully!', response);
+            console.log('Region updated successfully!', response);
             this.dialogRef.close(updatedRegionData); // Fermez la modal avec les nouvelles données du client
           },
           error => {
-            console.error('Error updating client:', error);
+            console.error('Error updating Region:', error);
             // Gérez l'erreur selon vos besoins (par exemple, affichez un message d'erreur à l'utilisateur)
           }
         );
@@ -53,11 +54,11 @@ export class RegionFormComponent implements OnInit {
         // Si l'ID du client n'existe pas, créez un nouveau client
         this.Reg.createRegion(updatedRegionData).subscribe(
           response => {
-            console.log('Client created successfully!', response);
+            console.log('Region created successfully!', response);
             this.dialogRef.close(updatedRegionData); // Fermez la modal avec les nouvelles données du client
           },
           error => {
-            console.error('Error creating client:', error);
+            console.error('Error creating Region:', error);
             // Gérez l'erreur selon vos besoins (par exemple, affichez un message d'erreur à l'utilisateur)
           }
         );

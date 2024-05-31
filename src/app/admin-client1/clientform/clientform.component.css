@@ -8,5 +8,39 @@
   transform: translate(-50%, -50%);
   margin: 0; /* Reset margin */
   padding: 0; /* Reset padding */
-  background-color: #fff; /* Adjust background color as needed */
+  width: 400px; /* Ajustez la largeur selon vos besoins */
+  padding: 30px;
+  background-color: rgba(255, 255, 255, 0.9); /* Pour rendre l'arrière-plan flou, utilisez une couleur semi-transparente */
+  border-radius: 10px;
+  backdrop-filter: blur(10px); /* Pour appliquer un flou à l'arrière-plan */
+  border: 1px solid #ccc; /* Ajoute une bordure de 1 pixel solide avec une couleur grise */
+  border-radius: 5px; /* Ajoute un arrondi aux coins de la boîte */
+  padding: 20px; /* Ajoute un peu d'espace à l'intérieur de la boîte */
+}
+
+.dialog-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form {
+  width: 100%; /* Ajustez la largeur du formulaire */
+  max-width: 500px; /* Définissez une largeur maximale pour le formulaire */
+}
+
+.form-group {
+  margin-bottom: 20px; /* Ajoute de l'espace entre les groupes de champs */
+}
+
+.custom-dialog-container {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border: 1px solid #ccc; /* Ajoute une bordure de 1 pixel solide avec une couleur grise */
+  border-radius: 5px; /* Ajoute un arrondi aux coins de la boîte */
+  padding: 20px; /* Ajoute un peu d'espace à l'intérieur de la boîte */
+  background-color: #fff; /* Couleur de fond de la boîte */
+  z-index: 1000; /* Assure que la modale est au-dessus de l'overlay flou */
 }

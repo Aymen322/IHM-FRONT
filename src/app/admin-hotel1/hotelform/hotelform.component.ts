@@ -34,11 +34,11 @@ export class HotelformComponent implements OnInit {
         updatedHotelData.id = this.data.id;
         this.HS.updateHotel(updatedHotelData).subscribe(
           response => {
-            console.log('Client updated successfully!', response);
+            console.log('Hotel updated successfully!', response);
             this.dialogRef.close(updatedHotelData); // Fermez la modal avec les nouvelles données du client
           },
           error => {
-            console.error('Error updating client:', error);
+            console.error('Error updating Hotel:', error);
             // Gérez l'erreur selon vos besoins (par exemple, affichez un message d'erreur à l'utilisateur)
           }
         );
@@ -46,11 +46,11 @@ export class HotelformComponent implements OnInit {
         // Si l'ID du client n'existe pas, créez un nouveau client
         this.HS.createHotel(updatedHotelData).subscribe(
           response => {
-            console.log('Client created successfully!', response);
+            console.log('Hotel created successfully!', response);
             this.dialogRef.close(updatedHotelData); // Fermez la modal avec les nouvelles données du client
           },
           error => {
-            console.error('Error creating client:', error);
+            console.error('Error creating Hotel:', error);
             // Gérez l'erreur selon vos besoins (par exemple, affichez un message d'erreur à l'utilisateur)
           }
         );
